@@ -98,20 +98,20 @@ namespace Factory.Controllers
             return RedirectToAction("Index");
         }
 
-        // public ActionResult Delete(int id)
-        // {
-        //     Item thisItem = _db.Items.FirstOrDefault(item => item.ItemId == id);
-        //     return View(thisItem);
-        // }
+        public ActionResult Delete(int id)
+        {
+            Engineer thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
+            return View(thisEngineer);
+        }
 
-        // [HttpPost, ActionName("Delete")]
-        // public ActionResult DeleteConfirmed(int id)
-        // {
-        //     Item thisItem = _db.Items.FirstOrDefault(item => item.ItemId == id);
-        //     _db.Items.Remove(thisItem);
-        //     _db.SaveChanges();
-        //     return RedirectToAction("Index");
-        // }
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Engineer thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
+            _db.Engineers.Remove(thisEngineer);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
         //     public ActionResult AddTag(int id)
         //     {
