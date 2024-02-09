@@ -1,1 +1,27 @@
+@using Factory.Models;
+
 <h3>Welcome</h3>
+
+<h4>Engineers</h4>
+@if (Model["engineers"].Length == 0)
+{
+    <p>No engineers have been added.</p>
+}
+<ul>
+    @foreach (Engineer engineer in Model["engineers"])
+    {
+        <li>@Html.ActionLink(@engineer.Name, "Details", "Engineers", new { id = @engineer.EngineerId })</li>
+    }
+</ul>
+
+<h4>Machines</h4>
+@if (Model["machines"].Length == 0)
+{
+    <p>No machines have been added.</p>
+}
+<ul>
+    @foreach (Machine machine in Model["machines"])
+    {
+        <li>@Html.ActionLink(@machine.Name, "Details", "Machines", new { id = @machine.MachineId })</li>
+    }
+</ul>
