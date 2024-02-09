@@ -9,5 +9,5 @@ public class Engineer
     [Required(ErrorMessage = "The engineer must have a name")]
     public string Name { get; set; }
     public string ImageUrl { get; set; }
-    public List<EngineerMachine> JoinEntities { get; }
+    public List<EngineerMachine> EngineerMachines { get; }
 }

@@ -54,15 +54,14 @@ namespace Factory.Controllers
 
             return RedirectToAction("Index");
         }
-        // public ActionResult Details(int id)
-        // {
-        //     Item thisItem = _db.Items
-        //                         .Include(item => item.Collection)
-        //                         .Include(item => item.ItemTagJoinEntities)
-        //                         .ThenInclude(join => join.Tag)
-        //                         .FirstOrDefault(item => item.ItemId == id);
-        //     return View(thisItem);
-        // }
+        public ActionResult Details(int id)
+        {
+            Engineer thisEngineer = _db.Engineers
+                                .Include(engineer => engineer.EngineerMachines)
+                                .ThenInclude(join => join.Machine)
+                                .FirstOrDefault(engineer => engineer.EngineerId == id);
+            return View(thisEngineer);
+        }
 
         //     public ActionResult Edit(int id)
         //     {
@@ -77,29 +76,29 @@ namespace Factory.Controllers
         //         return View(model);
         //     }
 
-        // [HttpPost]
-        // public ActionResult Edit(Item item, List<int> TagIds)
-        // {
-        //     _db.Items.Update(item);
-        //     List<ItemTagJoinEntity> entities = _db.ItemTagJoinEntities
-        //     .Where((entity) => entity.ItemId == item.ItemId).ToList();
-        //     foreach (ItemTagJoinEntity entity in entities)
-        //     {
-        //         _db.ItemTagJoinEntities.Remove(entity);
-        //     }
-        //     foreach (var tagId in TagIds)
-        //     {
+        [HttpPost]
+        public ActionResult Edit(Engineer engineer, List<int> MachineIds)
+        {
+            _db.Engineers.Update(engineer);
+            List<EngineerMachine> joins = _db.EngineerMachines
+            .Where((join) => join.EngineerId == engineer.EngineerId).ToList();
+            foreach (EngineerMachine join in joins)
+            {
+                _db.EngineerMachines.Remove(join);
+            }
+            foreach (int machineId in MachineIds)
+            {
 
-        //         _db.ItemTagJoinEntities.Add(new ItemTagJoinEntity
-        //         {
-        //             ItemId = item.ItemId,
-        //             TagId = tagId
-        //         });
-        //     }
-        //     _db.SaveChanges();
+                _db.EngineerMachines.Add(new EngineerMachine
+                {
+                    EngineerId = engineer.EngineerId,
+                    MachineId = machineId
+                });
+            }
+            _db.SaveChanges();
 
-        //     return RedirectToAction("Index");
-        // }
+            return RedirectToAction("Index");
+        }
 
         // public ActionResult Delete(int id)
         // {

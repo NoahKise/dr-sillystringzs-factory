@@ -1,0 +1,25 @@
+@model Factory.Models.Engineer
+
+<body>
+    <h2> Engineer Details</h2>
+    <hr />
+    <img src="@Model.ImageUrl" alt="Engineer" />
+    <p>@Model.Name</p>
+    <p>
+        @foreach (EngineerMachine join in Model.EngineerMachines)
+        {
+            <span>@Html.ActionLink($"#{join.Machine.Name}", "Details", "Machines", new
+                    {
+                        id =
+                       join.Machine.MachineId
+                    }) </span>
+        }
+    </p>
+    <a href="/engineers/edit/@Model.EngineerId">
+        <img class="editIcon" src="~/assets/images/edit.svg" alt="edit icon" />
+    </a>
+    <a href="/engineers/delete/@Model.EngineerId">
+        <img class="deleteIcon" src="~/assets/images/deleteIcon.svg" alt="delete icon" />
+    </a>
+
+</body>
