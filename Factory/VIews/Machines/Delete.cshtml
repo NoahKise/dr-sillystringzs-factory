@@ -1,8 +1,9 @@
 @model Factory.Models.Machine
+<div class="delete">
+    <h3>Are you sure you want to delete @Model.Name?</h3>
 
-<h3>Are you sure you want to delete @Model.Name?</h3>
-
-@using (Html.BeginForm())
-{
-    <input type="submit" value="Delete" />
-}
+    @using (Html.BeginForm())
+    {
+        <input type="submit" value="Delete" />
+    }
+</div>

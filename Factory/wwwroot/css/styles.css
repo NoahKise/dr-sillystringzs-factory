@@ -2,6 +2,7 @@ body {
     background: rgb(31, 238, 126);
     background: linear-gradient(0deg, rgba(31, 238, 126, 1) 0%, rgba(248, 255, 169, 1) 100%);
     height: 100vh;
+    background-attachment: fixed;
 }
 
 .thumbnail {
@@ -46,10 +47,11 @@ a {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    height: 60vh;
+    height: 55vh;
     overflow: scroll;
     margin-left: 10vw;
     margin-right: 10vw;
+    padding: 10px;
 }
 
 .detailsCard {
@@ -61,6 +63,8 @@ a {
     border-width: 3px;
     border-color: black;
     box-shadow: 3px 0px 3px 0px grey;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .detailsCardImage img {
@@ -136,6 +140,66 @@ a {
 
 @media only screen and (min-width: 750px) {
     .fullList {
-        height: 57vh;
+        height: 53vh;
     }
+}
+
+#machineForm h3 {
+    text-align: center;
+}
+
+#machineForm img {
+    margin-left: 10px;
+}
+
+#machineFormCard {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50vh;
+    overflow: scroll;
+}
+
+#engineerForm h3 {
+    text-align: center;
+}
+
+#engineerForm img {
+    margin-left: 10px;
+}
+
+#engineerFormCard {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50vh;
+    overflow: scroll;
+}
+
+.newEntry {
+    display: block;
+    font-family: carrots;
+    font-size: 20px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.delete {
+    text-align: center;
+}
+
+#home {
+    display: flex;
+    flex-direction: row;
+    width: 350px;
+    font-family: carrots;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+    font-size: 20px;
 }
