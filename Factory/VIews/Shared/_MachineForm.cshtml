@@ -1,0 +1,63 @@
+@using Microsoft.AspNetCore.Mvc;
+@{
+    Machine machine = Model["Machine"];
+    string action = Model["Action"];
+    List<Engineer> engineers = Model["Engineers"];
+    string buttonText = "Add";
+    string titleText = "Add a new machine";
+    if (action == "Edit")
+    {
+        buttonText = "Save";
+        titleText = $"Editing {machine.Name}";
+    }
+}
+
+<body>
+    <div id="machineForm">
+        <h3>@titleText</h3>
+
+        <div id="machineFormCard">
+            <div id="machineFields">
+                <form asp-controller="Machines" asp-action=@action method="post">
+                    @if (action == "Edit")
+                    {
+                        <input asp-for="@machine.MachineId" type="hidden" />
+                    }
+                    <input asp-for=@machine.Name type="text" placeholder="Name..." />
+                    <br />
+                    <input asp-for=@machine.ImageUrl type="text" id="imageUrlInput" placeholder="Image URL..." />
+                    <br />
+                    @foreach (Engineer engineer in engineers)
+                    {
+                        <input type="checkbox" name="EngineerIds" value="@engineer.EngineerId" />
+                        @engineer.Name
+                        <br />
+                    }
+
+                    <input type="submit" value=@buttonText />
+                </form>
+                <br />
+            </div>
+            <div id="previewImage">
+                <img id="imageUrlPreview" src="" alt="Image Preview" style="max-width: 200px; max-height: 200px;" />
+                <br />
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function updateImagePreview() {
+                const imageUrl = document.getElementById('imageUrlInput').value;
+                const imagePreview = document.getElementById('imageUrlPreview');
+                if (imageUrl.trim() === '') {
+                    imagePreview.src = 'https://cdn3.iconfinder.com/data/icons/design-n-code/100/272127c4-8d19-4bd3-bd22-2b75ce94ccb4-512.png';
+                } else {
+                    imagePreview.src = imageUrl;
+                }
+            }
+            document.getElementById('imageUrlInput').addEventListener('change', updateImagePreview);
+            updateImagePreview();
+        });
+    </script>
+</body>
