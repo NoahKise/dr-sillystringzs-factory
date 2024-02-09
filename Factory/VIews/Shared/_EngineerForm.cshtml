@@ -27,7 +27,7 @@
                     <br />
                     <input asp-for=@engineer.ImageUrl type="text" id="imageUrlInput" placeholder="Image URL" />
                     <br />
-                    <p>Qualified For:</p>
+                    <p>Licensed to Repair:</p>
                     @foreach (Machine machine in machines)
                     {
                         <input type="checkbox" name="MachineIds" value="@machine.MachineId" />

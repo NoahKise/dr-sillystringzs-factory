@@ -7,8 +7,10 @@
 
 @foreach (Engineer engineer in Model)
 {
+    <a href="/engineers/details/@engineer.EngineerId">
     <div class="listRow">
-    <img class="thumbnail" src=@engineer.ImageUrl alt="thumbnail">
-    <h3>@Html.ActionLink($"{@engineer.Name}", "Details", new { id = engineer.EngineerId })
-</div>
+        <img class="thumbnail" src=@engineer.ImageUrl alt="thumbnail">
+        <h3>@engineer.Name</h3>
+    </div>
+</a>
 }

@@ -7,8 +7,10 @@
 
 @foreach (Machine machine in Model)
 {
+    <a href="/machines/details/@machine.MachineId">
     <div class="listRow">
-    <img class="thumbnail" src=@machine.ImageUrl alt="thumbnail">
-    <h3>@Html.ActionLink($"{@machine.Name}", "Details", new { id = machine.MachineId })
-</div>
+        <img class="thumbnail" src=@machine.ImageUrl alt="thumbnail">
+        <h3>@machine.Name</h3>
+    </div>
+</a>
 }
