@@ -102,6 +102,9 @@ a {
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+    filter: hue-rotate(340deg);
+    z-index: 1;
+    position: relative;
 }
 
 #linkRow {
@@ -115,6 +118,8 @@ a {
     margin-top: -10vw;
     font-size: 3vw;
     font-family: carrots;
+    z-index: 2;
+    position: relative;
 }
 
 @font-face {
