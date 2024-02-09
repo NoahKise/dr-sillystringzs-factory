@@ -4,13 +4,14 @@
 {
     <h3>No engineers have been added...</h3>
 }
-
-@foreach (Engineer engineer in Model)
-{
-    <a href="/engineers/details/@engineer.EngineerId">
-    <div class="listRow">
-        <img class="thumbnail" src=@engineer.ImageUrl alt="thumbnail">
-        <h3>@engineer.Name</h3>
-    </div>
-</a>
-}
+<div class="fullList">
+    @foreach (Engineer engineer in Model)
+    {
+        <a href="/engineers/details/@engineer.EngineerId">
+            <div class="listRow">
+                <img class="thumbnail" src=@engineer.ImageUrl alt="thumbnail">
+                <h3>@engineer.Name</h3>
+            </div>
+        </a>
+    }
+</div>
