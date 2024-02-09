@@ -62,5 +62,39 @@ namespace Factory.Controllers
                                 .FirstOrDefault(machine => machine.MachineId == id);
             return View(thisMachine);
         }
+        public ActionResult Edit(int id)
+        {
+            Machine thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
+            Dictionary<string, object> model = new() {
+            {"Machine", thisMachine},
+            {"Engineers", _db.Engineers.ToList()},
+            {"Action", "Edit"}
+          };
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Machine machine, List<int> EngineerIds)
+        {
+            _db.Machines.Update(machine);
+            List<EngineerMachine> joins = _db.EngineerMachines
+            .Where((join) => join.MachineId == machine.MachineId).ToList();
+            foreach (EngineerMachine join in joins)
+            {
+                _db.EngineerMachines.Remove(join);
+            }
+            foreach (int engineerId in EngineerIds)
+            {
+
+                _db.EngineerMachines.Add(new EngineerMachine
+                {
+                    MachineId = machine.MachineId,
+                    EngineerId = engineerId
+                });
+            }
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }
