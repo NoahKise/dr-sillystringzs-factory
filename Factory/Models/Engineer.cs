@@ -6,7 +6,7 @@ namespace Factory.Models;
 public class Engineer
 {
     public int EngineerId { get; set; }
-    [Required(ErrorMessage = "The engineer must have a name")]
+    [Required]
     public string Name { get; set; }
     public string ImageUrl { get; set; }
     public List<EngineerMachine> EngineerMachines { get; }

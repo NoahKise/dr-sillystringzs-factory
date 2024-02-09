@@ -23,9 +23,9 @@
                     {
                         <input asp-for="@machine.MachineId" type="hidden" />
                     }
-                    <input asp-for=@machine.Name type="text" placeholder="Name..." />
+                    <input asp-for=@machine.Name type="text" placeholder="Name (Required)" />
                     <br />
-                    <input asp-for=@machine.ImageUrl type="text" id="imageUrlInput" placeholder="Image URL..." />
+                    <input asp-for=@machine.ImageUrl type="text" id="imageUrlInput" placeholder="Image URL" />
                     <br />
                     <p>Authorized Engineers:</p>
                     @foreach (Engineer engineer in engineers)

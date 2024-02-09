@@ -18,14 +18,14 @@
 
         <div id="engineerFormCard">
             <div id="engineerFields">
-                <form asp-controller="Engineers" asp-action=@action method="post">
+                <form asp-controller="Engineers" asp-action="@action" method="post">
                     @if (action == "Edit")
                     {
                         <input asp-for="@engineer.EngineerId" type="hidden" />
                     }
-                    <input asp-for=@engineer.Name type="text" placeholder="Name..." />
+                    <input asp-for=@engineer.Name type="text" placeholder="Name (Required)" />
                     <br />
-                    <input asp-for=@engineer.ImageUrl type="text" id="imageUrlInput" placeholder="Image URL..." />
+                    <input asp-for=@engineer.ImageUrl type="text" id="imageUrlInput" placeholder="Image URL" />
                     <br />
                     <p>Qualified For:</p>
                     @foreach (Machine machine in machines)

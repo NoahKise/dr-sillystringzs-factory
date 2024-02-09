@@ -36,23 +36,35 @@ namespace Factory.Controllers
         [HttpPost]
         public ActionResult Create(Engineer engineer, List<int> MachineIds)
         {
-            _db.Engineers.Add(engineer);
-            _db.SaveChanges();
-
-            if (MachineIds != null && MachineIds.Any())
+            if (!ModelState.IsValid)
             {
-                foreach (int machineId in MachineIds)
-                {
-                    _db.EngineerMachines.Add(new EngineerMachine
-                    {
-                        EngineerId = engineer.EngineerId,
-                        MachineId = machineId
-                    });
-                }
-                _db.SaveChanges();
+                Dictionary<string, object> model = new() {
+        {"Engineer", new Engineer()},
+        {"Machines", _db.Machines.ToList()},
+        {"Action", "Create"}
+                };
+                return View(model);
             }
+            else
+            {
+                _db.Engineers.Add(engineer);
+                _db.SaveChanges();
 
-            return RedirectToAction("Index");
+                if (MachineIds != null && MachineIds.Any())
+                {
+                    foreach (int machineId in MachineIds)
+                    {
+                        _db.EngineerMachines.Add(new EngineerMachine
+                        {
+                            EngineerId = engineer.EngineerId,
+                            MachineId = machineId
+                        });
+                    }
+                    _db.SaveChanges();
+                }
+
+                return RedirectToAction("Index");
+            }
         }
         public ActionResult Details(int id)
         {
