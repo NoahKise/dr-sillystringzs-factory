@@ -63,18 +63,16 @@ namespace Factory.Controllers
             return View(thisEngineer);
         }
 
-        //     public ActionResult Edit(int id)
-        //     {
-        //         Item thisItem = _db.Items.FirstOrDefault(item => item.ItemId == id);
-        //         Dictionary<string, object> model = new() {
-        //     {"Item", thisItem},
-        //     {"CollectionSelect", new SelectList(_db.Collections, "CollectionId", "Name")},
-        //     {"TodaysDate", DateTime.Now.ToString("dd-MM-yyyy")},
-        //     {"Tags", _db.Tags.ToList()},
-        //     {"Action", "Edit"}
-        //   };
-        //         return View(model);
-        //     }
+        public ActionResult Edit(int id)
+        {
+            Engineer thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
+            Dictionary<string, object> model = new() {
+            {"Engineer", thisEngineer},
+            {"Machines", _db.Machines.ToList()},
+            {"Action", "Edit"}
+          };
+            return View(model);
+        }
 
         [HttpPost]
         public ActionResult Edit(Engineer engineer, List<int> MachineIds)
