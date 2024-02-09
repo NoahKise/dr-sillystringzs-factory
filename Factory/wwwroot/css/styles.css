@@ -1,0 +1,10 @@
+.thumbnail {
+    width: 160px;
+    height: 160px;
+    overflow: hidden;
+}
+
+.listRow {
+    display: flex;
+    flex-direction: column;
+}
