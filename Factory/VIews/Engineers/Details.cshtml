@@ -5,16 +5,17 @@
     <hr />
     <img src="@Model.ImageUrl" alt="Engineer" />
     <p>@Model.Name</p>
-    <p>
+    <p>Qualified For:</p>
+    <ul>
         @foreach (EngineerMachine join in Model.EngineerMachines)
         {
-            <span>@Html.ActionLink($"#{join.Machine.Name}", "Details", "Machines", new
+            <li>@Html.ActionLink($"{join.Machine.Name}", "Details", "Machines", new
                     {
                         id =
-                       join.Machine.MachineId
-                    }) </span>
+                         join.Machine.MachineId
+                    }) </li>
         }
-    </p>
+    </ul>
     <a href="/engineers/edit/@Model.EngineerId">
         <img class="editIcon" src="~/assets/images/edit.svg" alt="edit icon" />
     </a>

@@ -112,44 +112,5 @@ namespace Factory.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
-
-        //     public ActionResult AddTag(int id)
-        //     {
-        //         Item item = _db.Items.FirstOrDefault(items => items.ItemId == id);
-        //         Dictionary<string, object> model = new()
-        //   {
-        //     {"item", item},
-        //     {"selectList", new SelectList(_db.Tags, "TagId", "Name")}
-        //   };
-        //         return View(model);
-        //     }
-
-        //         [HttpPost]
-        //         public ActionResult AddTag(Item item, int tagId)
-        //         {
-        // #nullable enable
-        //             ItemTagJoinEntity? itemTagJoinEntity = _db.ItemTagJoinEntities
-        //             .FirstOrDefault(join => (join.TagId == tagId && join.ItemId == item.ItemId));
-        // #nullable disable
-        //             if (itemTagJoinEntity == null && tagId != 0)
-        //             {
-        //                 _db.ItemTagJoinEntities.Add(new ItemTagJoinEntity()
-        //                 {
-        //                     TagId = tagId,
-        //                     ItemId = item.ItemId
-        //                 });
-        //                 _db.SaveChanges();
-        //             }
-        //             return RedirectToAction("Details", new { id = item.ItemId });
-        //         }
-
-        // [HttpPost]
-        // public ActionResult DeleteItemTagJoinEntity(int itemTagJoinEntityId)
-        // {
-        //     ItemTagJoinEntity join = _db.ItemTagJoinEntities.FirstOrDefault(entry => entry.ItemTagJoinEntityId == itemTagJoinEntityId);
-        //     _db.ItemTagJoinEntities.Remove(join);
-        //     _db.SaveChanges();
-        //     return RedirectToAction("Index");
-        // }
     }
 }
