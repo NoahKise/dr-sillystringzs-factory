@@ -27,6 +27,7 @@
                     <br />
                     <input asp-for=@machine.ImageUrl type="text" id="imageUrlInput" placeholder="Image URL..." />
                     <br />
+                    <p>Authorized Engineers:</p>
                     @foreach (Engineer engineer in engineers)
                     {
                         <input type="checkbox" name="EngineerIds" value="@engineer.EngineerId" />
@@ -57,6 +58,15 @@
                 }
             }
             document.getElementById('imageUrlInput').addEventListener('change', updateImagePreview);
+            updateImagePreview();
+
+            document.getElementById('machineForm').addEventListener('submit', function (event) {
+                updateImagePreview();
+                if (document.getElementById('imageUrlInput').value.trim() === '') {
+                    document.getElementById('imageUrlInput').value = 'https://images.vexels.com/media/users/3/145736/isolated/preview/8e99b5ecf870581da80ce137827eeee4-ideas-machine-cartoon.png';
+                }
+            });
+
             updateImagePreview();
         });
     </script>

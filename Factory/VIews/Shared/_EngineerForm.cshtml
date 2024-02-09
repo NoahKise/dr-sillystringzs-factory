@@ -27,6 +27,7 @@
                     <br />
                     <input asp-for=@engineer.ImageUrl type="text" id="imageUrlInput" placeholder="Image URL..." />
                     <br />
+                    <p>Qualified For:</p>
                     @foreach (Machine machine in machines)
                     {
                         <input type="checkbox" name="MachineIds" value="@machine.MachineId" />
@@ -48,15 +49,25 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             function updateImagePreview() {
-                const imageUrl = document.getElementById('imageUrlInput').value;
+                const imageUrlInput = document.getElementById('imageUrlInput');
+                const imageUrl = imageUrlInput.value.trim();
                 const imagePreview = document.getElementById('imageUrlPreview');
-                if (imageUrl.trim() === '') {
+
+                if (imageUrl === '') {
                     imagePreview.src = 'https://cdn3.iconfinder.com/data/icons/design-n-code/100/272127c4-8d19-4bd3-bd22-2b75ce94ccb4-512.png';
                 } else {
                     imagePreview.src = imageUrl;
                 }
             }
             document.getElementById('imageUrlInput').addEventListener('change', updateImagePreview);
+
+            document.getElementById('engineerForm').addEventListener('submit', function (event) {
+                updateImagePreview();
+                if (document.getElementById('imageUrlInput').value.trim() === '') {
+                    document.getElementById('imageUrlInput').value = 'https://static-00.iconduck.com/assets.00/avatar-default-symbolic-icon-479x512-n8sg74wg.png';
+                }
+            });
+
             updateImagePreview();
         });
     </script>
