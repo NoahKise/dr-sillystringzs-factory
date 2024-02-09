@@ -1,3 +1,9 @@
+body {
+    background: rgb(31, 238, 126);
+    background: linear-gradient(0deg, rgba(31, 238, 126, 1) 0%, rgba(248, 255, 169, 1) 100%);
+    height: 100vh;
+}
+
 .thumbnail {
     width: 160px;
     height: 160px;
@@ -28,6 +34,7 @@
 
 .listRow h3 {
     text-align: center;
+    font-family: carrots;
 }
 
 a {
@@ -39,6 +46,10 @@ a {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    height: 60vh;
+    overflow: scroll;
+    margin-left: 10vw;
+    margin-right: 10vw;
 }
 
 .detailsCard {
@@ -67,6 +78,7 @@ a {
 
 .detailsCardText h2 {
     text-align: center;
+    font-family: carrots;
 }
 
 .detailsCardIcons {
@@ -82,4 +94,43 @@ a {
 .icon {
     margin-left: 10px;
     width: 30px;
+}
+
+#logo {
+    display: block;
+    width: 90vw;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#linkRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50vw;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -10vw;
+    font-size: 3vw;
+    font-family: carrots;
+}
+
+@font-face {
+    font-family: carrots;
+    src: url(../assets/fonts/Carrots\ Free.ttf);
+}
+
+@media only screen and (min-width: 800px) {
+    #linkRow {
+        margin-top: -80px;
+        font-size: 25px;
+    }
+}
+
+@media only screen and (min-width: 750px) {
+    .fullList {
+        height: 57vh;
+    }
 }

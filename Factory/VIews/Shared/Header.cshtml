@@ -1,10 +1,11 @@
 <a href="/">
-    <h1>Dr. Sillystringz's Factory</h1>
+    <img id="logo" src="~/assets/images/logo.png">
 </a>
-
-<li>
-    @Html.ActionLink("Engineers", "Index", "Engineers", null)
-</li>
-<li>
-    @Html.ActionLink("Machines", "Index", "Machines", null)
-</li>
+<div id="linkRow">
+    <h2>
+        @Html.ActionLink("Engineers", "Index", "Engineers", null)
+    </h2>
+    <h2>
+        @Html.ActionLink("Machines", "Index", "Machines", null)
+    </h2>
+</div>
