@@ -2,7 +2,7 @@
 
 #### By Noah Kise
 
-#### A C# web application to allow a fictional factory owner to keep track of their engineers and machines. An Exercise in many-to-many database relationships.
+#### A C# web application to allow a fictional factory owner to keep track of their engineers and machines. An exercise in many-to-many database relationships.
 
 ## Technologies Used
 
